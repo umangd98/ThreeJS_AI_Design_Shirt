@@ -8,7 +8,7 @@ import {downloadCanvasToImage, reader} from '../config/helpers'
 import {EditorTabs, FilterTabs, DecalTypes} from '../config/constants'
 import {fadeAnimation, slideAnimation} from '../config/motion'
 import { AIPicker, ColorPicker, CustomButton, FilePicker, Tab } from '../components'
-
+ 
 const Customizer = () => {
   const snap = useSnapshot(state)
   const [file, setFile] = useState('')
@@ -37,7 +37,7 @@ const Customizer = () => {
     try {
       //call our backend to generate an AI image
       setGeneratingImg(true)
-      const response = await fetch('http://localhost:8080/api/v1/dalle', {
+      const response = await fetch(config.production.backendUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
